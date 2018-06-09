@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+	<title>שאלון התפתחותי - אנמנזה</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="appCtrl">
+
+	<header>
+		<div class="logo"></div>
+		<span>בס"ד</span>
+	</header>
+
+	<div id="wrapper">
+
+		<h1>רשימת לקוחות</h1>
+
+		<div class="patient" ng-repeat="patient in patients">
+			<span>שם הילד: {{patient.fName}}</span>
+			<span>שם משפחה: {{patient.lName}}</span>
+			<span>ת"ז: {{patient.idNo}}</span>
+			<span>תאריך לידה: {{patient.bDate}}</span>
+			<span>מסגרת חינוכית: {{patient.school}}</span>
+			<span>שפות מדוברות בבית: {{patient.langs}}</span>
+
+			<span>כתובת: {{patient.address}}</span>
+			<span>מס' טלפון בבית: {{patient.tel}}</span>
+			<span>כתובת מייל: {{patient.email}}</span>
+
+			<span>שם האם: {{patient.motherName}}</span>
+			<span>מקצוע: {{patient.mJob}}</span>
+			<span>מס' פלאפון: {{patient.mTel}}</span>
+			<span>שם האב: {{patient.fatherName}}</span>
+			<span>מקצוע: {{patient.fJob}}</span>
+			<span>מס' פלאפון: {{patient.fTel}}</span>
+
+			<table>
+				<tr>
+				    <th></th>
+				    <th>שם</th>
+				    <th>גיל</th>
+				    <th>מין</th>
+				    <th>בעיות דיבור</th>
+				    <th>טופל בשפה ודיבור</th>
+				    <th>מסגרת חינוכית</th>
+				</tr>
+				<tr ng-repeat="sibling in patient.siblings">
+				    <td>{{$index}}</td>
+				    <td>{{sibling.name}}</td>
+				    <td>{{sibling.age}}</td>
+				    <td>ז</td>
+				    <td>יש</td>
+				    <td>לא</td>
+				    <td>{{sibling.school}}</td>
+				</tr>
+			</table>
+
+			<span>גורם מפנה לאבחון: {{patient.ans1}}</span>
+			<span>סיבת ההפניה: {{patient.ans2}}</span>
+			<span>מהו לדעתכם הקושי העיקרי של הילד? {{patient.ans3}}</span>
+
+			<span>האם מלמל? {{patient.ans4}}</span>
+			<span>באיזה גיל אמר מילים ראשונות? {{patient.ans5}}</span>
+			<span>מידע נוסף לגבי התפתחות השפה: {{patient.ans6}}</span>
+			<span>האם אתם מבינים את הילד? {{patient.ans7}}</span>
+			<span>האם זרים מבינים אותו? {{patient.ans8}}</span>
+			<span>•	לילד שעדיין אינו מדבר- האם נראה שמבין, כיצד מתקשר?  {{patient.ans9}}</span>
+			<span>האם היה כבר בטיפול? {{patient.ans10}}</span>
+			<span>האם מהלך ההריון היה תקין? (אם לא, פרטי): {{patient.ans11}}</span>
+			<span>האם מהלך הלידה היה תקין? (אם לא, פרטי): {{patient.ans12}}</span>
+
+
+			<span>האם בוצעה בדיקת שמיעה? {{patient.ans13}}</span>
+			<span>אם כן, מתי? {{patient.ans14}}</span>
+			<span>מה היו תוצאות הבדיקה? {{patient.ans15}}</span>
+			<span>האם עבר ניתוחים או סבל ממחלות אא"ג? {{patient.ans16}}</span>
+
+			<span>האם ינק? {{patient.ans17}}</span>
+			<span>האם אוכל מגוון מרקמים (אוכל קשה, רך, דייסתי)? {{patient.ans18}}</span>
+			<span>האם משתמש במוצץ או באצבע? {{patient.ans19}}</span>
+			<span>אם כן, כמה שעות ביממה? {{patient.ans20}}</span>
+			<span>האם קיים ריור (נזילת רוק)? {{patient.ans21}}</span>
+
+			<span>מה הילד אוהב לעשות בשעות הפנאי? {{patient.ans22}}</span>
+			<span>האם משחק עם חברים בני גילו? {{patient.ans23}}</span>
+			<span>האם הילד נהנה מהאזנה לסיפורים? {{patient.ans24}}</span>
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</body>
+
+
+
+</html>

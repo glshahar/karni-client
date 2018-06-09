@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+	<title>שאלון התפתחותי - אנמנזה</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="appCtrl">
+
+	<header>
+		<div class="logo"></div>
+		<span>בס"ד</span>
+	</header>
+
+	<div id="wrapper">
+		<form>
+
+			<h1>שאלון התפתחותי - אנמנזה</h1>
+			
+			<div class="col1">
+				<span>שם הילד:</span>
+				<input type="text" name="fName" ng-model="fName" placeholder="* שם הילד" required>
+			</div>
+			<div class="col2">
+				<span>שם משפחה:</span>
+				<input type="text" name="lName" ng-model="lName" placeholder="* שם משפחה" required>
+			</div>
+			<div class="col3">
+				<span>ת"ז:</span>
+				<input type="text" name="idNo" ng-model="idNo" placeholder="* ת''ז" required>
+			</div>
+
+			<div class="col1">
+				<span>תאריך לידה:</span>
+				<input type="date" name="bDate" id="bDate" placeholder="תאריך לידה" required>
+			</div>
+			<div class="col2">
+				<span>מסגרת חינוכית:</span>
+				<input type="text" name="school" ng-model="school" placeholder="מסגרת חינוכית">
+			</div>
+			<div class="col3">
+				<span>שפות מדוברות בבית:</span>
+				<input type="text" name="langs" ng-model="langs" placeholder="שפות מדוברות">
+			</div>
+
+			<div class="col1">
+				<span>כתובת:</span>
+				<input type="text" name="address" ng-model="address" placeholder="כתובת">
+			</div>
+			<div class="col2">
+				<span>מס' טלפון בבית:</span>
+				<input type="tel" name="tel" ng-model="tel" placeholder="מס' טלפון בבית">
+			</div>
+			<div class="col3">
+				<span>כתובת מייל:</span>
+				<input type="email" name="email" ng-model="email" placeholder="כתובת מייל">
+			</div>
+
+
+			<div class="clear"></div>
+
+
+			<h2>פרטי ההורים ובני המשפחה:</h2>
+
+			<div class="col1">
+				<span>שם האם:</span>
+				<input type="text" name="motherName" ng-model="motherName" placeholder="שם האם" required>
+			</div>
+			<div class="col2">
+				<span>מקצוע:</span>
+				<input type="text" name="mJob" ng-model="mJob" placeholder="מקצוע" required>
+			</div>
+			<div class="col3">
+				<span>מס' פלאפון:</span>
+				<input type="tel" name="mTel" ng-model="mTel" placeholder="מס' פלאפון">
+			</div>
+
+			<div class="col1">
+				<span>שם האב:</span>
+				<input type="text" name="fatherName" ng-model="fatherName" placeholder="שם האב" required>
+			</div>
+			<div class="col2">
+				<span>מקצוע:</span>
+				<input type="text" name="fJob" ng-model="fJob" placeholder="מקצוע" required>
+			</div>
+			<div class="col3">
+				<span>מס' פלאפון:</span>
+				<input type="tel" name="fTel" ng-model="fTel" placeholder="מס' פלאפון">
+			</div>
+
+
+			<div class="clear"></div>
+
+
+			<h3>אחים ואחיות (מהגדול לקטן)</h3>
+
+			<table>
+				<tr>
+				    <th></th>
+				    <th>שם</th>
+				    <th>גיל</th>
+				    <th>מין</th>
+				    <th>בעיות דיבור</th>
+				    <th>טופל בשפה ודיבור</th>
+				    <th>מסגרת חינוכית</th>
+				</tr>
+				<tr>
+				    <td>1</td>
+				    <td><input type="text" name="name1" ng-model="name1"></td>
+				    <td><input type="number" min="1" name="age1" ng-model="age1"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school1" ng-model="school1"></td>
+				</tr>
+				<tr>
+				    <td>2</td>
+				    <td><input type="text" name="name2" ng-model="name2"></td>
+				    <td><input type="number" min="1" name="age2" ng-model="age2"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school2" ng-model="school2"></td>
+				</tr>
+				<tr>
+				    <td>3</td>
+				    <td><input type="text" name="name3" ng-model="name3"></td>
+				    <td><input type="number" min="1" name="age3" ng-model="age3"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school3" ng-model="school3"></td>
+				</tr>
+				<tr>
+				    <td>4</td>
+				    <td><input type="text" name="name4" ng-model="name4"></td>
+				    <td><input type="number" min="1" name="age4" ng-model="age4"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>				    
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school4" ng-model="school4"></td>
+				</tr>
+				<tr>
+				    <td>5</td>
+				    <td><input type="text" name="name5" ng-model="name5"></td>
+				    <td><input type="number" min="1" name="age5" ng-model="age5"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school5" ng-model="school5"></td>
+				</tr>
+				<tr>
+				    <td>6</td>
+				    <td><input type="text" name="name6" ng-model="name6"></td>
+				    <td><input type="number" min="1" name="age6" ng-model="age6"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school6" ng-model="school6"></td>
+				</tr>
+				<tr>
+				    <td>7</td>
+				    <td><input type="text" name="name7" ng-model="name7"></td>
+				    <td><input type="number" min="1" name="age7" ng-model="age7"></td>
+				    <td><span>ז</span> / <span href="#">נ</span></td>
+				    <td><span>יש</span> / <span>אין</span></td>
+				    <td><span>כן</span> / <span>לא</span></td>
+				    <td><input type="text" name="school7" ng-model="school7"></td>
+				</tr>
+			</table>
+
+			<div class="row">
+				<span>גורם מפנה לאבחון:</span>
+				<input type="text" name="ans1" ng-model="ans1">
+			</div>
+			<div class="row">
+				<span>סיבת ההפניה:</span>
+				<input type="text" name="ans2" ng-model="ans2">
+			</div>
+			<div class="row">
+				<span>מהו לדעתכם הקושי העיקרי של הילד?</span>
+				<input type="text" name="ans3" ng-model="ans3">
+			</div>
+
+
+			<h2>התפתחות שפתית</h2>
+
+			<div class="row">
+				<span>האם מלמל?</span>
+				<input type="text" name="ans4" ng-model="ans4">
+			</div>
+			<div class="row">
+				<span>באיזה גיל אמר מילים ראשונות?</span>
+				<input type="text" name="ans5" ng-model="ans5">
+			</div>
+			<div class="row">
+				<span>מידע נוסף לגבי התפתחות השפה:</span>
+				<input type="text" name="ans6" ng-model="ans6">
+			</div>
+			<div class="row">
+				<span>האם אתם מבינים את הילד?</span>
+				<input type="text" name="ans7" ng-model="ans7">
+			</div>
+			<div class="row">
+				<span>האם זרים מבינים אותו?</span>
+				<input type="text" name="ans8" ng-model="ans8">
+			</div>
+			<div class="row">
+				<span>•	לילד שעדיין אינו מדבר- האם נראה שמבין, כיצד מתקשר? </span>
+				<input type="text" name="ans9" ng-model="ans9">
+			</div>
+			<div class="row">
+				<span>האם היה כבר בטיפול?</span>
+				<input type="text" name="ans10" ng-model="ans10">
+			</div>
+			<div class="row">
+				<span>האם מהלך ההריון היה תקין? (אם לא, פרטי):</span>
+				<input type="text" name="ans11" ng-model="ans11">
+			</div>
+			<div class="row">
+				<span>האם מהלך הלידה היה תקין? (אם לא, פרטי):</span>
+				<input type="text" name="ans12" ng-model="ans12">
+			</div>
+
+
+			<h2>שמיעה</h2>
+
+			<div class="row">
+				<span>האם בוצעה בדיקת שמיעה?</span>
+				<input type="text" name="ans13" ng-model="ans13">
+			</div>
+			<div class="row">
+				<span>אם כן, מתי?</span>
+				<input type="text" name="ans14" ng-model="ans14">
+			</div>
+			<div class="row">
+				<span>מה היו תוצאות הבדיקה?</span>
+				<input type="text" name="ans15" ng-model="ans15">
+			</div>
+			<div class="row">
+				<span>האם עבר ניתוחים או סבל ממחלות אא"ג?</span>
+				<input type="text" name="ans16" ng-model="ans16">
+			</div>
+
+
+			<h2>אכילה ותפקודי פה</h2>
+
+			<div class="row">
+				<span>האם ינק?</span>
+				<input type="text" name="ans17" ng-model="ans17">
+			</div>
+			<div class="row">
+				<span>האם אוכל מגוון מרקמים (אוכל קשה, רך, דייסתי)?</span>
+				<input type="text" name="ans18" ng-model="ans18">
+			</div>
+			<div class="row">
+				<span>האם משתמש במוצץ או באצבע?</span>
+				<input type="text" name="ans19" ng-model="ans19">
+			</div>
+			<div class="row">
+				<span>אם כן, כמה שעות ביממה?</span>
+				<input type="text" name="ans20" ng-model="ans20">
+			</div>
+			<div class="row">
+				<span>האם קיים ריור (נזילת רוק)?</span>
+				<input type="text" name="ans21" ng-model="ans21">
+			</div>
+
+
+			<h2>פנאי</h2>
+
+			<div class="row">
+				<span>מה הילד אוהב לעשות בשעות הפנאי?</span>
+				<input type="text" name="ans22" ng-model="ans22">
+			</div>
+			<div class="row">
+				<span>האם משחק עם חברים בני גילו?</span>
+				<input type="text" name="ans23" ng-model="ans23">
+			</div>
+			<div class="row">
+				<span>האם הילד נהנה מהאזנה לסיפורים?</span>
+				<input type="text" name="ans24" ng-model="ans24">
+			</div>
+
+
+			<input type="submit" class="sendBtn" value="שלח" ng-click="sendForm()">
+
+		</form>
+	</div>
+
+	<footer></footer>
+
+</body>
+
+
+
+</html>
