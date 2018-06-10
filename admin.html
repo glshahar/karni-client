@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="js/libs/angular.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/scriptAdmin.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -23,25 +23,38 @@
 
 		<h1>רשימת לקוחות</h1>
 
-		<div class="patient" ng-repeat="patient in patients">
-			<span>שם הילד: {{patient.fName}}</span>
-			<span>שם משפחה: {{patient.lName}}</span>
-			<span>ת"ז: {{patient.idNo}}</span>
-			<span>תאריך לידה: {{patient.bDate}}</span>
-			<span>מסגרת חינוכית: {{patient.school}}</span>
-			<span>שפות מדוברות בבית: {{patient.langs}}</span>
+		<div class="patient" ng-click="getPatient(patient._id)" ng-repeat="patient in patients | orderBy : filter track by $index" ng-class="{patientActive:currPatient==patient._id}">
+			<div class="imgBox kidImg"></div><h5>{{patient.dateReg}}</h5>
+			<span class="col1">{{patient.fName}} {{patient.lName}}</span>
+			<span class="col2">ת"ז: {{patient.idNo}}</span>
+			<span class="col3">תאריך לידה: {{patient.bDate}}</span>
 
-			<span>כתובת: {{patient.address}}</span>
-			<span>מס' טלפון בבית: {{patient.tel}}</span>
-			<span>כתובת מייל: {{patient.email}}</span>
+			<div class="clear"></div>
 
-			<span>שם האם: {{patient.motherName}}</span>
-			<span>מקצוע: {{patient.mJob}}</span>
-			<span>מס' פלאפון: {{patient.mTel}}</span>
-			<span>שם האב: {{patient.fatherName}}</span>
-			<span>מקצוע: {{patient.fJob}}</span>
-			<span>מס' פלאפון: {{patient.fTel}}</span>
+			<span class="col1">מסגרת חינוכית: {{patient.school}}</span>
+			<span class="col2">שפות מדוברות בבית: {{patient.langs}}</span>
 
+			<span class="col3">כתובת: {{patient.address}}</span>
+			<span class="col1">מס' טלפון בבית: {{patient.tel}}</span>
+			<span class="col2">כתובת מייל: {{patient.email}}</span>
+
+
+			<div class="clear"></div>
+			<!-- <div class="imgBox femaleImg"></div> -->
+
+			<span class="col1">שם האם: {{patient.motherName}}</span>
+			<span class="col2">מקצוע: {{patient.mJob}}</span>
+			<span class="col3">מס' פלאפון: {{patient.mTel}}</span>
+
+			<div class="clear"></div>
+			<!-- <div class="imgBox maleImg"></div> -->
+
+			<span class="col1">שם האב: {{patient.fatherName}}</span>
+			<span class="col2">מקצוע: {{patient.fJob}}</span>
+			<span class="col3">מס' פלאפון: {{patient.fTel}}</span>
+
+			<div class="clear"></div>
+			
 			<table>
 				<tr>
 				    <th></th>
@@ -53,45 +66,45 @@
 				    <th>מסגרת חינוכית</th>
 				</tr>
 				<tr ng-repeat="sibling in patient.siblings">
-				    <td>{{$index}}</td>
+				    <td>{{$index+1}}</td>
 				    <td>{{sibling.name}}</td>
 				    <td>{{sibling.age}}</td>
-				    <td>ז</td>
-				    <td>יש</td>
-				    <td>לא</td>
+				    <td>{{sibling.gender}}</td>
+				    <td>{{sibling.probSpeach}}</td>
+				    <td>{{sibling.speach}}</td>
 				    <td>{{sibling.school}}</td>
 				</tr>
 			</table>
 
-			<span>גורם מפנה לאבחון: {{patient.ans1}}</span>
-			<span>סיבת ההפניה: {{patient.ans2}}</span>
-			<span>מהו לדעתכם הקושי העיקרי של הילד? {{patient.ans3}}</span>
+			<span class="row">גורם מפנה לאבחון: <span>{{patient.ans1}}</span></span>
+			<span class="row">סיבת ההפניה: <span>{{patient.ans2}}</span></span>
+			<span class="row">מהו לדעתכם הקושי העיקרי של הילד? <span>{{patient.ans3}}</span></span>
 
-			<span>האם מלמל? {{patient.ans4}}</span>
-			<span>באיזה גיל אמר מילים ראשונות? {{patient.ans5}}</span>
-			<span>מידע נוסף לגבי התפתחות השפה: {{patient.ans6}}</span>
-			<span>האם אתם מבינים את הילד? {{patient.ans7}}</span>
-			<span>האם זרים מבינים אותו? {{patient.ans8}}</span>
-			<span>•	לילד שעדיין אינו מדבר- האם נראה שמבין, כיצד מתקשר?  {{patient.ans9}}</span>
-			<span>האם היה כבר בטיפול? {{patient.ans10}}</span>
-			<span>האם מהלך ההריון היה תקין? (אם לא, פרטי): {{patient.ans11}}</span>
-			<span>האם מהלך הלידה היה תקין? (אם לא, פרטי): {{patient.ans12}}</span>
+			<span class="row">האם מלמל? <span>{{patient.ans4}}</span></span>
+			<span class="row">באיזה גיל אמר מילים ראשונות? <span>{{patient.ans5}}</span></span>
+			<span class="row">מידע נוסף לגבי התפתחות השפה: <span>{{patient.ans6}}</span></span>
+			<span class="row">האם אתם מבינים את הילד? <span>{{patient.ans7}}</span></span>
+			<span class="row">האם זרים מבינים אותו? <span>{{patient.ans8}}</span></span>
+			<span class="row">•	לילד שעדיין אינו מדבר- האם נראה שמבין, כיצד מתקשר?  <span>{{patient.ans9}}</span></span>
+			<span class="row">האם היה כבר בטיפול? <span>{{patient.ans10}}</span></span>
+			<span class="row">האם מהלך ההריון היה תקין? (אם לא, פרטי): <span>{{patient.ans11}}</span></span>
+			<span class="row">האם מהלך הלידה היה תקין? (אם לא, פרטי): <span>{{patient.ans12}}</span></span>
 
 
-			<span>האם בוצעה בדיקת שמיעה? {{patient.ans13}}</span>
-			<span>אם כן, מתי? {{patient.ans14}}</span>
-			<span>מה היו תוצאות הבדיקה? {{patient.ans15}}</span>
-			<span>האם עבר ניתוחים או סבל ממחלות אא"ג? {{patient.ans16}}</span>
+			<span class="row">האם בוצעה בדיקת שמיעה? <span>{{patient.ans13}}</span></span>
+			<span class="row">אם כן, מתי? <span>{{patient.ans14}}</span></span>
+			<span class="row">מה היו תוצאות הבדיקה? <span>{{patient.ans15}}</span></span>
+			<span class="row">האם עבר ניתוחים או סבל ממחלות אא"ג? <span>{{patient.ans16}}</span></span>
 
-			<span>האם ינק? {{patient.ans17}}</span>
-			<span>האם אוכל מגוון מרקמים (אוכל קשה, רך, דייסתי)? {{patient.ans18}}</span>
-			<span>האם משתמש במוצץ או באצבע? {{patient.ans19}}</span>
-			<span>אם כן, כמה שעות ביממה? {{patient.ans20}}</span>
-			<span>האם קיים ריור (נזילת רוק)? {{patient.ans21}}</span>
+			<span class="row">האם ינק? <span>{{patient.ans17}}</span></span>
+			<span class="row">האם אוכל מגוון מרקמים (אוכל קשה, רך, דייסתי)? <span>{{patient.ans18}}</span></span>
+			<span class="row">האם משתמש במוצץ או באצבע? <span>{{patient.ans19}}</span></span>
+			<span class="row">אם כן, כמה שעות ביממה? <span>{{patient.ans20}}</span></span>
+			<span class="row">האם קיים ריור (נזילת רוק)? <span>{{patient.ans21}}</span></span>
 
-			<span>מה הילד אוהב לעשות בשעות הפנאי? {{patient.ans22}}</span>
-			<span>האם משחק עם חברים בני גילו? {{patient.ans23}}</span>
-			<span>האם הילד נהנה מהאזנה לסיפורים? {{patient.ans24}}</span>
+			<span class="row">מה הילד אוהב לעשות בשעות הפנאי? <span>{{patient.ans22}}</span></span>
+			<span class="row">האם משחק עם חברים בני גילו? <span>{{patient.ans23}}</span></span>
+			<span class="row">האם הילד נהנה מהאזנה לסיפורים? <span>{{patient.ans24}}</span></span>
 		</div>
 
 	</div>

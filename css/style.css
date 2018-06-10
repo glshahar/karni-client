@@ -1,14 +1,20 @@
+
+/* Generic style */
 body {
 	background-color: #fff;
 	margin: 0px;
 	direction: rtl;
+	font-family: SansHebrew;
 }
 
-header {height: 180px;}
+header {
+	height: 180px;
+	width: 100%;
+}
 
 header > .logo {
 	height: 100%;
-	width: 50%;
+	width: 70%;
 	background-image: url("../img/logo.png");
 	background-repeat: no-repeat;
 	background-size: auto 100%;
@@ -28,10 +34,27 @@ header > span {
 	margin: 0 auto;
 }
 
+footer {
+	width: 100%;
+	height: 300px;
+	background-image: url("../img/footer.png");
+	background-size: 75% auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+.clear {clear: both;}
+
+
+
+
+
+/* form style */
 
 .col1, .col2, .col3 {
 	float: right;
-	width: 33.3%;
+	width: 33.33%;
 }
 .col1 > span {
 	width: 100px;
@@ -45,7 +68,6 @@ header > span {
 	width: 160px;
 	display: inline-block;
 }
-
 .col1 > input,
 .col2 > input,
 .col3 > input {
@@ -59,25 +81,27 @@ header > span {
 }
 .col3 > input {width: 50%}
 
-
 h1 {
 	text-align: center;
 	text-decoration: underline;
 	margin-bottom: 50px;
+	font-size: 28px;
 }
 h2 {
 	text-decoration: underline;
 	margin-top: 30px;
+	font-size: 20px;
 }
-h3 {margin-top: 30px;}
+h3 {
+	margin-top: 30px;
+	font-size: 20px;
+}
 input {font-size: 16px;}
 input:focus {border-color: #276b64;}
 span {
-	font-size: 22px;
+	font-size: 18px;
 	line-height: 50px;
 }
-
-
 
 table {
     border-collapse: collapse;
@@ -88,7 +112,6 @@ table, td, th {
 	text-align: center;
 }
 tr {height: 40px;}
-
 th:nth-child(1) {width: 3%;}
 th:nth-child(2) {width: 17%}
 th:nth-child(3) {width: 5%;}
@@ -110,17 +133,24 @@ td > span {
 	line-height: 25px;
 	font-size: 15px;
 	cursor: pointer;
+	display: inline-block;
 }
-
+td > span.slash {
+	width: auto;
+	cursor: none;
+}
+td > span:hover {background-color: #ececec;}
+td > span.slash:hover {background-color: #fff;}
+td > span.active {background-color: #b5e4df;}
 
 .row {
 	width: 99%;
 	margin-top: 20px;
 	/*background-color: green;*/
 	overflow: hidden;
+	display: block;
 }
 .row > input {
-	/*background-color: pink;*/
 	width: 1500px;
 	outline: 0;
 	border: none;
@@ -148,39 +178,195 @@ input.sendBtn {
 	cursor: pointer;
 	margin-top: 60px;
 	margin-left: 10px;
+	outline: none;
 }
 
-
-
-footer {
-	width: 100%;
-	height: 300px;
-	/*background-color: red;*/
-	background-image: url("../img/footer.png");
-	background-size: 75% auto;
-	background-position: center;
-	background-repeat: no-repeat;
-	margin-top: 60px;
-	margin-bottom: 30px;
+.success > h3 {
+	text-align: center;
+	font-size: 55px;
+	color: #20665f;
+	margin-top: 50px;
 }
-
-.clear {
-	clear: both;
-}
-
-
-
-
-
 
 
 
 
 /* Patients Page - Admin */
-
 .patient {
-	width: 100%;
+	width: 92%;
+	max-height: 235px;
+	background-color: #fdfdfd;
+	margin-bottom: 30px;
+	padding: 20px 4%;
+	border-radius: 15px;
+	border: 1px solid #cccccc;
+	cursor: pointer;
+	overflow: hidden;
+
+	position: relative;
+    -webkit-transition: max-height 0.2s ease-in-out;
+    -moz-transition: max-height 0.2s ease-in-out;
+    -o-transition: max-height 0.2s ease-in-out;
+    -ms-transition: max-height 0.2s ease-in-out;
+    transition: max-height 0.2s ease-in-out;
+}
+.patientActive {
 	height: auto;
-	background-color: pink;
-	margin-bottom: 20px;
+	background-color: #f6f6f6;
+	max-height: 3000px;
+
+    -webkit-transition: max-height 0.4s ease-in-out;
+    -moz-transition: max-height 0.4s ease-in-out;
+    -o-transition: max-height 0.4s ease-in-out;
+    -ms-transition: max-height 0.4s ease-in-out;
+    transition: max-height 0.4s ease-in-out;
+}
+.patient:hover {background-color: #f6f6f6;}
+
+.patient > h5 {
+	width: 50%;
+	position: absolute;
+	text-align: left;
+	left: 12px;
+	top: -12px;
+	font-weight: normal;
+	color: #cccccc;
+	font-size: 12px;
+}
+.patient > table {
+	margin-top: 20px;
+	width: 90%;
+}
+.patient > .imgBox {
+	width: 3.33%;
+	height: 40px;
+	background-size: auto 70%;
+	/*background-color: green;*/
+	background-position: center;
+	background-repeat: no-repeat;
+	/*float: right;*/
+	opacity: 0.3;
+}
+.patient > .kidImg {background-image: url("../img/kid.png");}
+.patient > .maleImg {background-image: url("../img/male.png");}
+.patient > .femaleImg {background-image: url("../img/female.png");}
+
+.row > span {
+	margin-right: 10px;
+	font-weight: 600;
+}
+
+
+
+
+
+/* Desktop design */
+@media only screen and (min-width: 1824px) {
+    /* start of large desktop styles */
+	header > span {font-size: 22px;}
+	h1 {font-size: 32px;}
+	h2 {font-size: 22px;}
+	h3 {font-size: 22px;}
+	span {font-size: 19px;}
+    table {width: 95%;}
+	.row {width: 95%;}
+	input.sendBtn {
+		width: 300px;
+		height: 50px;
+		margin-left: 75px;
+	}
+	.success > h3 {
+		font-size: 65px;
+		margin-top: 80px;
+	}
+}
+
+
+/* Mobile design */
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+	header {height: 90px;}
+	header > .logo {
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	header > span {margin-right: 4%;}
+	#wrapper {
+		width: 94%;
+		overflow: hidden;
+	}
+
+	h1 {
+		font-size: 17px;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+	h2 {font-size: 16px;}
+	h3 {font-size: 16px;}
+	span {
+		font-size: 15px;
+		line-height: 26px;
+	}
+
+	.col1, .col2, .col3 {
+		float: right;
+		width: 100%;
+	}
+	.col1 > span,
+	.col2 > span,
+	.col3 > span {width: 35%;}
+
+	.col1 > input,
+	.col2 > input,
+	.col3 > input {
+		width: 60%;
+		margin: 8px 0px;
+	}
+
+	table {width: 100%;}
+	table, td, th {font-size: 12px;}
+	tr {height: 40px;}
+	th:nth-child(1) {width: 4%;}
+	th:nth-child(2) {width: 27%}
+	th:nth-child(3) {width: 12%;}
+	th:nth-child(4) {width: 10%;}
+	th:nth-child(5) {width: 10%;}
+	th:nth-child(6) {width: 10%;}
+	th:nth-child(7) {width: 27%;}
+	td > span.slash {display: none;}
+
+	footer {
+		height: 100px;
+		background-size: 100% auto;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.success > h3 {
+		font-size: 28px;
+		margin: 80px 0px;
+
+	}
+
+
+
+	.patient {
+		width: 91%;
+		max-height: 155px;
+		padding: 5px 4%;
+		margin-bottom: 20px;
+	}
+	.patientActive {
+		height: auto;
+		max-height: 2000px;
+	}
+	.patient > table {width: 100%;}
+	.patient > .imgBox {display: none;}
+}
+
+
+/* font style */
+@font-face {
+    font-family: SansHebrew;
+    src: url("../css/fonts/SansHebrewRegular.woff2");
 }

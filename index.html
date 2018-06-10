@@ -3,7 +3,7 @@
 <html ng-app="app">
 
 <head>
-	<title>שאלון התפתחותי - אנמנזה</title>
+	<title>שאלון התפתחותי</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,8 @@
 	</header>
 
 	<div id="wrapper">
-		<form>
+
+		<form ng-show="!formSuccess">
 
 			<h1>שאלון התפתחותי - אנמנזה</h1>
 			
@@ -63,19 +64,17 @@
 				<input type="email" name="email" ng-model="email" placeholder="כתובת מייל">
 			</div>
 
-
 			<div class="clear"></div>
-
 
 			<h2>פרטי ההורים ובני המשפחה:</h2>
 
 			<div class="col1">
 				<span>שם האם:</span>
-				<input type="text" name="motherName" ng-model="motherName" placeholder="שם האם" required>
+				<input type="text" name="motherName" ng-model="motherName" placeholder="שם האם">
 			</div>
 			<div class="col2">
 				<span>מקצוע:</span>
-				<input type="text" name="mJob" ng-model="mJob" placeholder="מקצוע" required>
+				<input type="text" name="mJob" ng-model="mJob" placeholder="מקצוע">
 			</div>
 			<div class="col3">
 				<span>מס' פלאפון:</span>
@@ -84,11 +83,11 @@
 
 			<div class="col1">
 				<span>שם האב:</span>
-				<input type="text" name="fatherName" ng-model="fatherName" placeholder="שם האב" required>
+				<input type="text" name="fatherName" ng-model="fatherName" placeholder="שם האב">
 			</div>
 			<div class="col2">
 				<span>מקצוע:</span>
-				<input type="text" name="fJob" ng-model="fJob" placeholder="מקצוע" required>
+				<input type="text" name="fJob" ng-model="fJob" placeholder="מקצוע">
 			</div>
 			<div class="col3">
 				<span>מס' פלאפון:</span>
@@ -97,7 +96,6 @@
 
 
 			<div class="clear"></div>
-
 
 			<h3>אחים ואחיות (מהגדול לקטן)</h3>
 
@@ -115,63 +113,147 @@
 				    <td>1</td>
 				    <td><input type="text" name="name1" ng-model="name1"></td>
 				    <td><input type="number" min="1" name="age1" ng-model="age1"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender1=='ז'}" ng-click="gender1='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender1=='נ'}" ng-click="gender1='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach1=='יש'}" ng-click="probSpeach1='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach1=='אין'}" ng-click="probSpeach1='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach1=='כן'}" ng-click="speach1='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach1=='לא'}" ng-click="speach1='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school1" ng-model="school1"></td>
 				</tr>
 				<tr>
 				    <td>2</td>
 				    <td><input type="text" name="name2" ng-model="name2"></td>
 				    <td><input type="number" min="1" name="age2" ng-model="age2"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender2=='ז'}" ng-click="gender2='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender2=='נ'}" ng-click="gender2='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach2=='יש'}" ng-click="probSpeach2='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach2=='אין'}" ng-click="probSpeach2='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach2=='כן'}" ng-click="speach2='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach2=='לא'}" ng-click="speach2='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school2" ng-model="school2"></td>
 				</tr>
 				<tr>
 				    <td>3</td>
 				    <td><input type="text" name="name3" ng-model="name3"></td>
 				    <td><input type="number" min="1" name="age3" ng-model="age3"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender3=='ז'}" ng-click="gender3='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender3=='נ'}" ng-click="gender3='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach3=='יש'}" ng-click="probSpeach3='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach3=='אין'}" ng-click="probSpeach3='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach3=='כן'}" ng-click="speach3='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach3=='לא'}" ng-click="speach3='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school3" ng-model="school3"></td>
 				</tr>
 				<tr>
 				    <td>4</td>
 				    <td><input type="text" name="name4" ng-model="name4"></td>
 				    <td><input type="number" min="1" name="age4" ng-model="age4"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>				    
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender4=='ז'}" ng-click="gender4='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender4=='נ'}" ng-click="gender4='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach4=='יש'}" ng-click="probSpeach4='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach4=='אין'}" ng-click="probSpeach4='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach4=='כן'}" ng-click="speach4='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach4=='לא'}" ng-click="speach4='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school4" ng-model="school4"></td>
 				</tr>
 				<tr>
 				    <td>5</td>
 				    <td><input type="text" name="name5" ng-model="name5"></td>
 				    <td><input type="number" min="1" name="age5" ng-model="age5"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender5=='ז'}" ng-click="gender5='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender5=='נ'}" ng-click="gender5='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach5=='יש'}" ng-click="probSpeach5='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach5=='אין'}" ng-click="probSpeach5='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach5=='כן'}" ng-click="speach5='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach5=='לא'}" ng-click="speach5='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school5" ng-model="school5"></td>
 				</tr>
 				<tr>
 				    <td>6</td>
 				    <td><input type="text" name="name6" ng-model="name6"></td>
 				    <td><input type="number" min="1" name="age6" ng-model="age6"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender6=='ז'}" ng-click="gender6='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender6=='נ'}" ng-click="gender6='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach6=='יש'}" ng-click="probSpeach6='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach6=='אין'}" ng-click="probSpeach6='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach6=='כן'}" ng-click="speach6='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach6=='לא'}" ng-click="speach6='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school6" ng-model="school6"></td>
 				</tr>
 				<tr>
 				    <td>7</td>
 				    <td><input type="text" name="name7" ng-model="name7"></td>
 				    <td><input type="number" min="1" name="age7" ng-model="age7"></td>
-				    <td><span>ז</span> / <span href="#">נ</span></td>
-				    <td><span>יש</span> / <span>אין</span></td>
-				    <td><span>כן</span> / <span>לא</span></td>
+				    <td>
+				    	<span ng-class="{active:gender7=='ז'}" ng-click="gender7='ז'">ז</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:gender7=='נ'}" ng-click="gender7='נ'">נ</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:probSpeach7=='יש'}" ng-click="probSpeach7='יש'">יש</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:probSpeach7=='אין'}" ng-click="probSpeach7='אין'">אין</span>
+				    </td>
+				    <td>
+				    	<span ng-class="{active:speach7=='כן'}" ng-click="speach7='כן'">כן</span>
+				    	<span class="slash">/</span>
+				    	<span ng-class="{active:speach7=='לא'}" ng-click="speach7='לא'">לא</span>
+				    </td>
 				    <td><input type="text" name="school7" ng-model="school7"></td>
 				</tr>
 			</table>
@@ -188,7 +270,6 @@
 				<span>מהו לדעתכם הקושי העיקרי של הילד?</span>
 				<input type="text" name="ans3" ng-model="ans3">
 			</div>
-
 
 			<h2>התפתחות שפתית</h2>
 
@@ -229,7 +310,6 @@
 				<input type="text" name="ans12" ng-model="ans12">
 			</div>
 
-
 			<h2>שמיעה</h2>
 
 			<div class="row">
@@ -248,7 +328,6 @@
 				<span>האם עבר ניתוחים או סבל ממחלות אא"ג?</span>
 				<input type="text" name="ans16" ng-model="ans16">
 			</div>
-
 
 			<h2>אכילה ותפקודי פה</h2>
 
@@ -273,7 +352,6 @@
 				<input type="text" name="ans21" ng-model="ans21">
 			</div>
 
-
 			<h2>פנאי</h2>
 
 			<div class="row">
@@ -289,10 +367,13 @@
 				<input type="text" name="ans24" ng-model="ans24">
 			</div>
 
-
 			<input type="submit" class="sendBtn" value="שלח" ng-click="sendForm()">
-
 		</form>
+
+		<div class="success" ng-show="formSuccess">
+			<h3>הטופס נשלח בהצלחה</h3>
+		</div>
+
 	</div>
 
 	<footer></footer>

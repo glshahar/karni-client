@@ -1,29 +1,19 @@
 'use strict';
 
-var app = angular.module('app', []);
-
 // var appUrl = "http://localhost:3000/";
 var appUrl = "https://karni-server.herokuapp.com/";
 
-app.controller('appCtrl', function($scope, $http) {
+var app = angular.module('app', []);
 
-    console.log("Karni - Form");
-    // get all patients
-    $http({
-        method : "GET",
-        url : appUrl+"getAllPatients"
-    }).then(function (response) {
-        console.log("get all patients Done successfully !");
-        console.log("JSON: "+JSON.stringify(response.data, null, 4));
-        $scope.patients = response.data;
-    }, function (response) {
-        console.log("get patients Error !");
-    });
+app.controller('appCtrl', function($scope, $http, $anchorScroll) {
+
+    console.log("Karni - Client Ctrl");
+    $scope.formSuccess = false;
 
     $scope.sendForm = function(){
         console.log("sendForm function");
-
-        if(($scope.fName)&&($scope.lName)&&($scope.idNo)){
+        // console.log($scope.fName+" "+$scope.lName+" "+$scope.idNo+" "+document.getElementById("bDate").value);
+        if(($scope.fName)&&($scope.lName)&&($scope.idNo)&&(document.getElementById("bDate").value)){
             console.log("validate - done");
 
             var userDetails = {
@@ -31,11 +21,12 @@ app.controller('appCtrl', function($scope, $http) {
                 'lName': $scope.lName,
                 'idNo': $scope.idNo,
                 'bDate': document.getElementById("bDate").value,
+
                 'school': $scope.school,
                 'langs': $scope.langs,
                 'address': $scope.address,
                 'tel': $scope.tel,
-                'email': $scope.loginEmail,
+                'email': $scope.email,
 
                 'motherName': $scope.motherName,
                 'mJob': $scope.mJob,
@@ -48,30 +39,51 @@ app.controller('appCtrl', function($scope, $http) {
                     {
                         'name': $scope.name1,
                         'age': $scope.age1,
+                        'gender': $scope.gender1,
+                        'probSpeach': $scope.probSpeach1,
+                        'speach': $scope.speach1,
                         'school': $scope.school1
                     },{
                         'name': $scope.name2,
                         'age': $scope.age2,
+                        'gender': $scope.gender2,
+                        'probSpeach': $scope.probSpeach2,
+                        'speach': $scope.speach2,
                         'school': $scope.school2
                     },{
                         'name': $scope.name3,
                         'age': $scope.age3,
+                        'gender': $scope.gender3,
+                        'probSpeach': $scope.probSpeach3,
+                        'speach': $scope.speach3,
                         'school': $scope.school3
                     },{
                         'name': $scope.name4,
                         'age': $scope.age4,
+                        'gender': $scope.gender4,
+                        'probSpeach': $scope.probSpeach4,
+                        'speach': $scope.speach4,
                         'school': $scope.school4
                     },{
                         'name': $scope.name5,
                         'age': $scope.age5,
+                        'gender': $scope.gender5,
+                        'probSpeach': $scope.probSpeach5,
+                        'speach': $scope.speach5,
                         'school': $scope.school5
                     },{
                         'name': $scope.name6,
                         'age': $scope.age6,
+                        'gender': $scope.gender6,
+                        'probSpeach': $scope.probSpeach6,
+                        'speach': $scope.speach6,
                         'school': $scope.school6
                     },{
                         'name': $scope.name7,
                         'age': $scope.age7,
+                        'gender': $scope.gender7,
+                        'probSpeach': $scope.probSpeach7,
+                        'speach': $scope.speach7,
                         'school': $scope.school7
                     }
                 ],
@@ -105,7 +117,20 @@ app.controller('appCtrl', function($scope, $http) {
                 'ans23': $scope.ans23,
                 'ans24': $scope.ans24
             };
+
+            var siblingsCounter = 0;
+            for (var i = 0; i < userDetails.siblings.length; i++) {
+                if(userDetails.siblings[i].name!=null)
+                    siblingsCounter++;
+                if(i==userDetails.siblings.length-1)
+                    userDetails.siblings.splice(siblingsCounter);
+            }
             console.log("Request: "+JSON.stringify(userDetails, null, 4));
+
+            $scope.formSuccess = true;
+            // scroll to top
+            var elmnt = document.getElementsByClassName("logo");
+            elmnt[0].scrollIntoView();
 
             // // Post - Form
             $http({
@@ -117,43 +142,13 @@ app.controller('appCtrl', function($scope, $http) {
                 // success
                 console.log("POST - sendForm successfully");
                 console.log("response: "+JSON.stringify(response.data, null, 4));
-
             }, 
             function(response) { // optional
                 // failed
                 console.log("Error POST");
             });
-
         }
         else console.log("validate - error");
-
     }
+
 });
-
-
-
-
-
-
-// 'use strict';
-
-// var app = angular.module('app', []);
-// var appUrl = "https://karni-server.herokuapp.com/queryField";
-
-// app.controller('appCtrl', function($scope, $http) {
-
-//     console.log("Karni - Client");
-
-//     // get all patients
-//     $http({
-//         method : "GET",
-//         url : appUrl+"?field=patients"
-//     }).then(function (response) {
-//         console.log("get all patients Done successfully !");
-//         console.log("JSON: "+JSON.stringify(response.data, null, 4));
-//         $scope.patients = response.data;
-//     }, function (response) {
-//         console.log("get patients Error !");
-//     });
-
-// });
