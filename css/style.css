@@ -251,7 +251,7 @@ input.sendBtn {
 .patient > .maleImg {background-image: url("../img/male.png");}
 .patient > .femaleImg {background-image: url("../img/female.png");}
 
-.row > span {
+.patient > .row > span {
 	margin-right: 10px;
 	font-weight: 600;
 }
