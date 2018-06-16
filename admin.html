@@ -3,11 +3,11 @@
 <html ng-app="app">
 
 <head>
-	<title>שאלון התפתחותי - אנמנזה</title>
+	<title>קרני שרם - קלינאית תקשורת</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <script src="js/libs/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.2/angular-local-storage.min.js"></script>
     <script src="js/scriptAdmin.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -16,13 +16,11 @@
 
 	<header>
 		<div class="logo"></div>
-		<span>בס"ד</span>
 	</header>
 
-	<div id="wrapper">
-
+	<div id="wrapper" ng-show="patients.length>0">
+		<a href="" class="logout" ng-click="logOut()">התנתק</a>
 		<h1>רשימת לקוחות</h1>
-
 		<div class="patient" ng-click="getPatient(patient._id)" ng-repeat="patient in patients | orderBy : filter track by $index" ng-class="{patientActive:currPatient==patient._id}">
 			<div class="imgBox kidImg"></div><h5>{{patient.dateReg}}</h5>
 			<span class="col1">{{patient.fName}} {{patient.lName}}</span>
@@ -106,8 +104,27 @@
 			<span class="row">האם משחק עם חברים בני גילו? <span>{{patient.ans23}}</span></span>
 			<span class="row">האם הילד נהנה מהאזנה לסיפורים? <span>{{patient.ans24}}</span></span>
 		</div>
-
 	</div>
+
+    <div class="loginForm" ng-hide="patients.length>0">
+        <img class="img-card" src="./img/profile-img-card.png"/>
+        <form>
+            <input type="email" name="email" ng-model="email" placeholder="Email" required autofocus>
+            <input type="password" name="password" ng-model="password" placeholder="Password" id="inputPassword" required>
+            <span id="errMsg" ng-if="errorMsg">{{errorMsg}}</span>
+            <button type="button" ng-click="showPassword()">
+            	<img src="./img/eye.png">
+            </button>
+            <div>
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button ng-click="adminLogin()" class="btn-signin" type="submit">Sign in</button>
+        </form>
+        <img id="statusServer" src="img/{{statusServer}}.gif" height="20" width="20">
+        <span>{{statusServer}}</span>
+    </div>
 
 	<footer></footer>
 
