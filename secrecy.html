@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+	<title>טופס ויתור סודיות</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/script.js"></script>
+	<script src="node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="secrecyCtrl">
+
+	<header>
+		<div class="logo"></div>
+		<span>בס"ד</span>
+	</header>
+
+	<div id="wrapper">
+
+		<form class="secrecy" ng-show="!formSuccess">
+
+			<h1>טופס ויתור סודיות</h1>
+
+			<span>
+				אני החתום מטה, אב / אם הילד:
+				<input type="text" name="fName" ng-model="fName" placeholder="* שם הילד" required>
+				, <span>ת"ז: </span>
+				<input type="text" name="idNo" ng-model="idNo" placeholder="* ת''ז" required>
+				,
+				<br>
+				נותן בזה רשות להעברת מידע הדדי בין קרני שרם, קלינאית התקשורת המטפלת לבין גורמים מטפלים נוספים<br>
+				(כגון: גננת, גננת שילוב, מטפלים פרא רפואיים בהווה ובעבר, מטפלים במרכז טיפולי / לקידום הלמידה, קופ"ח, שפ"ח). 
+				<br>זאת על מנת לאפשר טיפול יעיל בבננו / בתנו.
+			</span>
+			<div class="clear"></div>
+			<span>
+				הנני מוותר/ת על סודיות זו כלפי קרני שרם, קלינאית התקשורת, ולא תהיה לי כל טענה או תביעה מסוג כלשהו בקשר למסירת מידע כאמור. 
+			</span>
+			<div class="clear"></div>
+			<span>
+				בקשתי זו יפה גם לפי חוק הגנת הפרטיות התשמ"א – 1981 והיא חלה על כל מידע רפואי או אחר.
+			</span>
+			<div class="clear"></div>
+
+
+			<span class="parent">שם ההורה:</span>
+			<input type="text" name="parentName" ng-model="parentName" placeholder="* שם ההורה" required>
+			<div class="clear"></div>
+			<span class="parent">מס' ת"ז:</span>
+			<input type="text" name="parentId" ng-model="parentId" placeholder="* ת''ז" required>
+			<div class="clear"></div>
+			<span>חתימת ההורה:</span>
+			<div class="signature-box" id="signature-box">
+				<span>חתימת ההורה</span>
+			    <canvas id="signature-pad" class="signature-pad" width=400 height=200></canvas>
+			</div>
+
+			<a href="" id="clear" class="clearBtn">&#10005;</a>
+
+			<div class="clear"></div>
+
+			<input type="submit" class="sendBtn" value="שלח" ng-click="sendSecrecy()">
+		</form>
+
+		<div class="success" ng-show="formSuccess">
+			<h3>הטופס נשלח בהצלחה</h3>
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+
+    <script src="js/signature_pad.min.js"></script>
+
+</body>
+
+
+
+</html>

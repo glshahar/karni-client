@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+	<title>חוזה טיפולי</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="agreementCtrl">
+
+	<header>
+		<div class="logo"></div>
+		<span>בס"ד</span>
+	</header>
+
+	<div id="wrapper">
+
+		<form class="agreement" ng-show="!formSuccess">
+
+			<h1>חוזה טיפולי</h1>
+			
+			<span>
+				הורים יקרים,<br>
+				אני מברכת אתכם על תחילת הטיפול בילדכם ומאחלת לנו הצלחה מלאה בטיפול.<br>
+				להלן מס' הנחיות הנוגעות לשיתוף הפעולה בינינו:<br>
+			</span>
+
+			<ul>
+				<li>הטיפול יערך בתדירות חד שבועית, 
+					<span class="date">בכל יום:</span>
+					<input list="days" name="days" class="list" ng-model="day">
+					<datalist id="days">
+					    <option value="ראשון">
+					    <option value="שני">
+					    <option value="שלישי">
+					    <option value="רביעי">
+					    <option value="חמישי">
+					</datalist><span>,</span>
+					<span class="date">בשעה:</span>
+					<input type=time min=9:00 max=20:00 step=900 ng-model="hour"><span>,</span>
+					<span class="date">החל מתאריך: </span>
+					<input type="date" name="startDate" id="startDate" required><span>,</span>
+
+					<div class="clear"></div>
+					<!-- <h1>{{hour | date : 'hh:mm:ss'}}</h1> -->
+				</li>
+				<li>
+					יש להקפיד להגיע לטיפול מדי שבוע. במידה ונבצר מכם להגיע לטיפול הנכם נדרשים להודיע על כך בהתראה של 24 שעות לפחות 
+					<br>(ניתן להודיע בהודעת  SMS, או טלפונית למספר – 055-6678992). ביטולים חוזרים יביאו להפסקת הטיפול.
+				</li>
+				<li>
+					אורך הפגישה 45 דקות, מתוכן 5 הדקות האחרונות בדרך כלל מוקדשות לשיחה והדרכת הורים. <br>
+					המפגשים יחלו ויסתיימו בזמן. על מנת להפיק את המירב מהטיפול אבקשכם לא לאחר. כל איחור הוא על חשבון זמן הטיפול.
+				</li>
+				<li>
+					במידה שההורה אינו נוכח בטיפול, עליו להגיע כחמש דקות טרם סיום הטיפול על מנת להתעדכן בנעשה בטיפול ולקבל הדרכה להמשך עבודה בבית.
+				</li>
+				<li>
+					עם תחילת הטיפול יש להביא תוצאות בדיקת שמיעה עדכנית. במידה שאין ברשותכם, יש לקבוע תור ולעדכן אותי בתאריך הבדיקה. 
+					<br>מומלץ ליידע אותי כשבועיים לפני הבדיקה על מנת שאדריך אתכם כיצד להכין את הילד לבדיקה.
+				</li>
+				<li>
+					פגישות הדרכת הורים הן לעיתים חלק חשוב ומשמעותי בטיפול והן מתבצעות לפי הצורך ויחויבו ככל טיפול רגיל. 
+					<br>פגישות אלה בדרך כלל מתקיימות בשעות הערב, על מנת לאפשר את הגעת שני ההורים. 
+				</li>
+				<li>
+					אנא שתפו אותי באינפורמציה רלוונטית, במחשבות ובקשות בנוגע לטיפול.
+				</li>
+				<li>
+					מומלץ שלא "לדבר מעל הראש של הילד". אם ברצונכם לשתף אותי במידע אודות הילד, יש לעשות זאת כאשר הילד אינו נוכח בחדר, או בשיחת טלפון. 
+				</li>
+				<li>
+					שיחות טלפוניות עם צוות חינוכי או מטפלים נוספים יתקיימו לפי הצורך, לאחר חתימה על ויתור סודיות. שיחות אלה לא יחויבו בתשלום.
+				</li>
+				<li>
+					אופן התשלום: תשלום יתבצע בסיום כל פגישה. ניתן לשלם בצ'קים, מזומן או העברה בנקאית. 
+					<br>במקרה של העברה בנקאית יש לשלוח לי צילום מסך של ההעברה. 
+				</li>
+				<li>
+					ניתן ליצור איתי קשר בווטסאפ, טלפון או מייל. קחו בחשבון שרוב היום הפלאפון שלי על שקט, ולכן איני זמינה באופן מיידי. 
+					<br>אם לא עניתי- השאירו הודעה (עדיף בווטסאפ), ואשתדל לחזור אליכם בהקדם.
+				</li>
+			</ul>
+
+			<input type="submit" class="sendBtn" value="שלח" ng-click="sendAgreement()">
+		</form>
+
+		<div class="success" ng-show="formSuccess">
+			<h3>הטופס נשלח בהצלחה</h3>
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</body>
+
+
+
+</html>

@@ -9,10 +9,11 @@
 
     <script src="js/libs/angular.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body ng-controller="appCtrl">
+<body ng-controller="questionnaireCtrl">
 
 	<header>
 		<div class="logo"></div>
@@ -367,7 +368,7 @@
 				<input type="text" name="ans24" ng-model="ans24">
 			</div>
 
-			<input type="submit" class="sendBtn" value="שלח" ng-click="sendForm()">
+			<input type="submit" class="sendBtn" value="שלח" ng-click="sendQuestionnaire()">
 		</form>
 
 		<div class="success" ng-show="formSuccess">

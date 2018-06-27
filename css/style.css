@@ -199,6 +199,7 @@ input.sendBtn {
 
 
 /* Login Form style */
+
 .loginForm {
     max-width: 300px;
     padding: 30px;
@@ -300,6 +301,7 @@ input.sendBtn {
 
 
 /* Patients Page - Admin */
+
 .patient {
 	width: 92%;
 	max-height: 235px;
@@ -363,6 +365,118 @@ input.sendBtn {
 	margin-right: 10px;
 	font-weight: 600;
 }
+
+
+
+
+/* Agreement */
+
+.agreement > span {
+	font-size: 20px;
+	line-height: 35px;
+}
+.agreement > ul {
+	/*background-color: pink;*/
+	/*list-style-type: square;*/
+	/*list-style-type: circle;*/
+	margin-right: -12px;
+	margin-top: 35px;
+}
+.agreement > ul > li {
+	/*background-color: gray;*/
+	margin-top: 15px;
+	font-size: 18px;
+	line-height: 32px;
+}
+.agreement > ul > li > span.date {margin-right: 10px;}
+
+.agreement input {
+	outline: 0;
+	border: none;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #000;
+	margin-right: 5px;
+	padding-right: 5px;
+}
+.agreement .list {width: 100px;}
+
+
+/* Secrecy */
+
+.secrecy > .parent {
+	width: 90px;
+	display: inline-block;
+	font-size: 18px;
+	line-height: 25px;
+}
+.secrecy  input {
+	width: 200px;
+	outline: 0;
+	border: none;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #000;
+	line-height: 25px;
+	padding-right: 6px;
+	margin-top: 15px;
+	margin-right: 4px;
+	margin-bottom: 20px;
+}
+.secrecy > a.clearBtn {
+	text-decoration: none;
+	font-size: 40px;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #c2c2c2;
+	margin-top: -202px;
+	margin-right: 0px;
+	position: absolute;
+	display: block;
+}
+.secrecy > a.clearBtn:hover {color: #276b64;}
+
+.signature-box {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #eeeeee;
+    border-radius: 10px;
+}
+.signature-box:hover {border: 2px solid #bbb;}
+
+.signature-box:hover > span {display: none;}
+.signature-box > span {display: none;}
+
+.signature-active > span {
+	font-family: Guttman Yad-Brush;
+	position: absolute;
+	width: 70%;
+	height: auto;
+	float: left;
+	z-index: 2;
+	font-size: 62px;
+	text-align: center;
+	margin-right: 15%;
+	margin-top: 35px;
+	line-height: 65px;
+	color: #eeeeee;
+	display: block;
+	transition: 0.5s all;
+}
+
+.signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 200px;
+}
+
 
 
 
@@ -491,6 +605,54 @@ input.sendBtn {
 		top: 40px;
 		right: 20px;
 		font-size: 16px;
+	}
+
+
+	.secrecy > span {font-size: 16px;}
+	.secrecy > span > span {display: none;}
+
+	.signature-box {
+		width: 98%;
+		height: 180px;
+		margin-bottom: 20px;
+	}
+	.signature-pad {
+		width: 98%;
+		height: 180px;
+	}
+	.secrecy > a.clearBtn {
+		margin-right: 4px;
+		margin-top: -200px;
+	}
+
+	input.sendBtn {
+		width: 70%;
+		margin-left: 15%;
+	}
+
+
+	.agreement > span {
+		font-size: 18px;
+		line-height: 30px;
+	}
+	.agreement > ul {
+		margin-top: 15px;
+		margin-bottom: -10px;
+	}
+	.agreement > ul > li > span {
+		float: right;
+		margin-top: 10px;
+	}
+	.agreement > ul > li > span.date {
+		width: 100px;
+		font-size: 18px;
+		clear: both;
+		margin-top: 8px;
+	}
+	.agreement > ul input {
+		display: block;
+		float: right;
+		margin-top: 8px;
 	}
 
 }
