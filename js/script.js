@@ -52,6 +52,7 @@ app.controller('questionnaireCtrl', function($scope, $http, $anchorScroll) {
                 'fatherName': $scope.fatherName,
                 'fJob': $scope.fJob,
                 'fTel': $scope.fTel,
+                'married': $scope.married,
 
                 'siblings': [
                     {

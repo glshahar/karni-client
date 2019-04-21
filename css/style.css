@@ -89,6 +89,21 @@ footer {
 }
 .col3 > input {width: 50%}
 
+/* radio input */
+.col1 > label {
+	margin-left: 30px;
+}
+.radio {
+	margin-top: 10px;
+}
+input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+	transform: scale(1.5);
+	margin-left: 10px;
+	margin-right: 6px;
+}
+
 h1 {
 	text-align: center;
 	text-decoration: underline;
