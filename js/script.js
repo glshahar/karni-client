@@ -1,7 +1,7 @@
 'use strict';
 
 // var appUrl = "http://localhost:3000/";
-var appUrl = "https://karni-server.herokuapp.com/";
+var appUrl = "https://karni-server.vercel.app/";
 
 var app = angular.module('app', ['cloudinary']);
 
